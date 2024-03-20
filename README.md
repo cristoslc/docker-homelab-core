@@ -1,10 +1,15 @@
 # Docker Project
 
-Welcome to our Docker-based Homelab Project! This project is designed to create a unified development and deployment environment specifically tailored for homelab setups. By adhering to the guidelines and standards detailed below, we can ensure an efficient and cooperative development process tailored to our homelab needs.
+This project is designed to create a unified development and deployment environment specifically tailored for homelab setups. The core components are included in this repository, and additional components can be added as needed.
+
+CORE services include:
+ - nginx reverse proxy (TBD: swag / ngnix-proxy-manager)
+ - portainer
+ - guacamole
+ - speedtest-tracker
 
 ## Project Standards
-
-Adherence to the following standards is crucial for maintaining the quality and interoperability of the codebase:
+By adhering to the guidelines and standards detailed below, we can ensure an efficient and cooperative development process tailored to our homelab needs.
 
 - **Utility Scripts**: All utility scripts utilized within this project should be written in Python. This is to ensure consistency and maintainability across our codebase. Please ensure that your Python scripts are compatible with Python 3.6 and above, properly documented, and include necessary requirements files if third-party libraries are used.
 
