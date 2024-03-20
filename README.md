@@ -7,6 +7,8 @@ CORE services include:
  - portainer
  - guacamole
  - speedtest-tracker
+ - autoheal
+ - watchtower
 
 ## Project Standards
 By adhering to the guidelines and standards detailed below, we can ensure an efficient and cooperative development process tailored to our homelab needs.
