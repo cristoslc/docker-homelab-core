@@ -11,6 +11,9 @@ CORE services include:
  - watchtower
  - ddclient
 
+Extended (optional) services packaged in the core library include:
+ - Apprise
+
 ## Project Standards
 By adhering to the guidelines and standards detailed below, we can ensure an efficient and cooperative development process tailored to our homelab needs.
 
