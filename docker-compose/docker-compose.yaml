@@ -1,0 +1,84 @@
+version: '3.8'
+name: homelab
+
+services:
+
+  ##############################
+  # Non-Proxy Network Services #
+  ##############################
+  autoheal:
+    image: willfarrell/autoheal
+    container_name: autoheal
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=all
+      - AUTOHEAL_START_PERIOD=300
+    network_mode: none
+
+  ddclient:
+    image: linuxserver/ddclient
+    container_name: ddclient
+    environment:
+      - PUID=1000 # replace 1000 with your user / group id
+      - PGID=1000 # replace 1000 with your group id
+      - TZ=${TZ} # replace Europe/London with your timezone
+    volumes:
+      - ${BASEPATH}/ddclient/config:/config # replace path/to/config with the path to your ddclient config
+    network_mode: none
+    restart: unless-stopped
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TZ=${TZ}
+    restart: unless-stopped
+
+  ##############################
+  # Reverse Proxy Services     #
+  ##############################
+  reverse-proxy:
+    image: 'jc21/nginx-proxy-manager'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - '${BASEPATH}/nginx-proxy-manager:/data'
+      - '${BASEPATH}/nginx-proxy-manager/letsencrypt:/etc/letsencrypt'
+    networks:
+      - reverse-proxy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  
+  guacamole:
+    image: 'guacamole/guacd'
+    platform: linux/amd64
+    restart: unless-stopped
+    networks:
+      - reverse-proxy
+
+  speedtest:
+    image: 'linuxserver/speedtest-tracker'
+    restart: unless-stopped
+    # ports:
+    #   - "80:80"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+      - OOKLA_EULA_GDPR=true
+    volumes:
+      - '${BASEPATH}/speedtest/config:/config'
+    networks:
+      - reverse-proxy
+
+networks:
+  reverse-proxy:
+    name: reverse-proxy
+    driver: bridge
