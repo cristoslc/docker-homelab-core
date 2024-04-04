@@ -18,7 +18,7 @@ By adhering to the guidelines and standards detailed below, we can ensure an eff
 
 - **Code Style**: For Python scripts, adhere to [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guidelines. Ensure your code is clean, well-commented, and follows the best practices.
 
-- **Docker Practices**: Make use of multi-stage builds to minimize the size of your Docker images. Always tag your Docker images appropriately and strive for immutability. Use environment variables for configuration to ensure your Docker containers are environment agnostic.
+- **Docker Practices**: Use linuxserver.io images when available, official images when not, and custom images as a last resort.
 
 - **Version Control**: We use Git for version control. Commit messages should be clear and follow best practices. Feature branches should be used for development and merged into the main branch through pull requests.
 
