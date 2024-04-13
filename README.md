@@ -17,7 +17,7 @@ Extended (optional) services packaged in the core library include:
 ## Project Standards
 By adhering to the guidelines and standards detailed below, we can ensure an efficient and cooperative development process tailored to our homelab needs.
 
-- **Utility Scripts**: All utility scripts utilized within this project should be written in Python. This is to ensure consistency and maintainability across our codebase. Please ensure that your Python scripts are compatible with Python 3.6 and above, properly documented, and include necessary requirements files if third-party libraries are used.
+- **Utility Scripts**: All utility scripts utilized within this project should be written in Python. This is to ensure consistency and maintainability across our codebase. Please ensure that your Python scripts are compatible with Python 3.9 and above, properly documented, and include necessary requirements files if third-party libraries are used.
 
 - **Code Style**: For Python scripts, adhere to [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guidelines. Ensure your code is clean, well-commented, and follows the best practices.
 
