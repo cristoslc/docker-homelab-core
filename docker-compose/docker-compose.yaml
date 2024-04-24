@@ -63,7 +63,7 @@ services:
     networks:
       - reverse-proxy
 
-  speedtest:
+  speedtest-tracker:
     image: 'linuxserver/speedtest-tracker'
     restart: unless-stopped
     # ports:
